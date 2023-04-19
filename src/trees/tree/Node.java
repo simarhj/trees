@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Estudiantes
  */
-public class Node <T> {
+public abstract class Node <T> extends Tree <T> {
     
     private T value;
     private ArrayList<Node> childs = new ArrayList<>();

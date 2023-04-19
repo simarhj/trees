@@ -9,25 +9,26 @@ package trees.tree;
  * @author Estudiantes
  */
 public abstract class Tree<T> {
-    private Node<T> raiz = null;
+    private Node<T> root = null;
     private int high;
+    private int grade;
 
     public Tree() {
         high = 0;
     }
 
     /**
-     * @return the raiz
+     * @return the root
      */
-    public Node<T> getRaiz() {
-        return raiz;
+    public Node<T> getRoot() {
+        return root;
     }
 
     /**
-     * @param raiz the raiz to set
+     * @param root the root to set
      */
-    public void setRaiz(Node<T> raiz) {
-        this.raiz = raiz;
+    public void setRoot(Node<T> root) {
+        this.root = root;
     }
 
     /**
@@ -49,6 +50,31 @@ public abstract class Tree<T> {
     public abstract void drawTree();
     
     public void addNode(Node<T> parent, Node<T> child, int pos){
-        parent.getChilds().set(pos, child);
+        if(pos < 0 || pos >= grade){
+            return;
+        }
+        if(parent == null){
+            if(this.getRoot()!=null){
+                this.setRoot(child);
+            }else{
+                // indicarle a la raiz que lo agregue en otra ubicación.
+            }
+        }else{
+            parent.getChilds().set(pos, child);
+        }
+    }
+
+    /**
+     * @return the grade
+     */
+    public int getGrade() {
+        return grade;
+    }
+
+    /**
+     * @param grade the grade to set
+     */
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 }
